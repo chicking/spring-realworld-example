@@ -2,8 +2,8 @@ package study.godofchicken.realworldexample.common;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.MOCK;
+import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
-@SpringBootTest(webEnvironment = MOCK)
+@SpringBootTest(webEnvironment = NONE)
 public class SpringBootMockTest {
 }
