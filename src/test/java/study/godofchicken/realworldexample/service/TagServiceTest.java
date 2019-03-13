@@ -1,28 +1,32 @@
-package study.godofchicken.realworldexample.controllers;
+package study.godofchicken.realworldexample.service;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.test.context.junit4.SpringRunner;
-import study.godofchicken.realworldexample.common.SpringBootApiTest;
 import study.godofchicken.realworldexample.domain.tag.Tag;
 import study.godofchicken.realworldexample.domain.tag.TagRepository;
-import study.godofchicken.realworldexample.models.ResponseTags;
+import study.godofchicken.realworldexample.services.TagService;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
-public class TagControllerAPITest extends SpringBootApiTest {
+@SpringBootTest
+public class TagServiceTest {
 
     @Autowired
     TagRepository tagRepository;
+
+    @Autowired
+    TagService tagService;
 
     @Before
     public void setUp() {
@@ -36,12 +40,10 @@ public class TagControllerAPITest extends SpringBootApiTest {
     }
 
     @Test
-    public void getTags(){
-        ResponseTags resTags = this.restTemplate.getForObject("/api/tags", ResponseTags.class);
+    public void tags() {
+        List<String> tags = tagService.tags();
 
-        List<String> tagList = Arrays.asList("Vue.js", "React.js");
-
-        assertThat( "returns tags" , resTags.getTags(), is(tagList));
+        assertNotNull(tags);
+        assertEquals(tags, Arrays.asList("Vue.js", "React.js"));
     }
-
 }
