@@ -3,27 +3,26 @@ package study.godofchicken.realworldexample.web;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import study.godofchicken.realworldexample.common.SpringBootMockTest;
+import org.springframework.test.web.servlet.MockMvc;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = WebRestController.class)
-public class WebRestControllerTest extends SpringBootMockTest {
+@WebMvcTest(WebRestController.class)
+public class WebRestControllerTest {
 
     @Autowired
-    private WebRestController webRestController;
+    private MockMvc mockMvc;
 
     @Test
-    public void hello() {
-        // When
-        String greeting = webRestController.hello();
-
-        // Then
-        assertThat("", greeting, is("Hello World!!"));
+    public void hello() throws Exception {
+        this.mockMvc.perform(get("/hello")).andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string("Hello World!!"));
     }
 }
