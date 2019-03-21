@@ -49,6 +49,11 @@ export default {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    proxy : true,
+  },
+
+  proxy : {
+    '/api': 'http://localhost:8080'
   },
 
   /*
@@ -65,7 +70,8 @@ export default {
           enforce: 'pre',
           test: /\.(js|vue)$/,
           loader: 'eslint-loader',
-          exclude: /(node_modules)/
+          exclude: /(node_modules)/,
+          options: { fix : true }
         })
       }
     }

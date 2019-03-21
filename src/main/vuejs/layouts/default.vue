@@ -9,17 +9,19 @@
             <a class="nav-link active" href="">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">
-              <i class="ion-compose"></i>&nbsp;New Post
-            </a>
+            <nuxt-link class="nav-link" to="editor">
+              <i class="ion-compose" />&nbsp;New Post
+            </nuxt-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">
-              <i class="ion-gear-a"></i>&nbsp;Settings
-            </a>
+            <nuxt-link class="nav-link" to="settings">
+              <i class="ion-gear-a" />&nbsp;Settings
+            </nuxt-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="">Sign up</a>
+            <nuxt-link class="nav-link" to="register">
+              Sign up
+            </nuxt-link>
           </li>
         </ul>
       </div>
@@ -29,8 +31,8 @@
       <div class="container">
         <a href="/" class="logo-font">conduit</a>
         <span class="attribution">
-            An interactive learning project from <a href="https://thinkster.io">Thinkster</a>. Code &amp; design licensed under MIT.
-          </span>
+          An interactive learning project from <a href="https://thinkster.io">Thinkster</a>. Code &amp; design licensed under MIT.
+        </span>
       </div>
     </footer>
   </div>

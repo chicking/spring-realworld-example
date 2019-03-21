@@ -1,16 +1,16 @@
 <template>
   <div class="home-page">
-
     <div class="banner">
       <div class="container">
-        <h1 class="logo-font">conduit</h1>
+        <h1 class="logo-font">
+          conduit
+        </h1>
         <p>A place to share your knowledge.</p>
       </div>
     </div>
 
     <div class="container page">
       <div class="row">
-
         <div class="col-md-9">
           <div class="feed-toggle">
             <ul class="nav nav-pills outline-active">
@@ -25,13 +25,13 @@
 
           <div class="article-preview">
             <div class="article-meta">
-              <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg" /></a>
+              <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg"></a>
               <div class="info">
                 <a href="" class="author">Eric Simons</a>
                 <span class="date">January 20th</span>
               </div>
               <button class="btn btn-outline-primary btn-sm pull-xs-right">
-                <i class="ion-heart"></i> 29
+                <i class="ion-heart" /> 29
               </button>
             </div>
             <a href="" class="preview-link">
@@ -43,13 +43,13 @@
 
           <div class="article-preview">
             <div class="article-meta">
-              <a href="profile.html"><img src="http://i.imgur.com/N4VcUeJ.jpg" /></a>
+              <a href="profile.html"><img src="http://i.imgur.com/N4VcUeJ.jpg"></a>
               <div class="info">
                 <a href="" class="author">Albert Pai</a>
                 <span class="date">January 20th</span>
               </div>
               <button class="btn btn-outline-primary btn-sm pull-xs-right">
-                <i class="ion-heart"></i> 32
+                <i class="ion-heart" /> 32
               </button>
             </div>
             <a href="" class="preview-link">
@@ -58,7 +58,6 @@
               <span>Read more...</span>
             </a>
           </div>
-
         </div>
 
         <div class="col-md-3">
@@ -66,20 +65,20 @@
             <p>Popular Tags</p>
 
             <div class="tag-list">
-              <a href="" class="tag-pill tag-default">programming</a>
-              <a href="" class="tag-pill tag-default">javascript</a>
-              <a href="" class="tag-pill tag-default">emberjs</a>
-              <a href="" class="tag-pill tag-default">angularjs</a>
-              <a href="" class="tag-pill tag-default">react</a>
-              <a href="" class="tag-pill tag-default">mean</a>
-              <a href="" class="tag-pill tag-default">node</a>
-              <a href="" class="tag-pill tag-default">rails</a>
+              <a v-for="tag of tags" :key="tag" href="" class="tag-pill tag-default">{{ tag }}</a>
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 </template>
+
+<script>
+export default {
+  asyncData({ app }) {
+    return app.$axios.$get('/api/tags')
+    // { tags: ['ag', 'ad'] }
+  }
+}
+</script>
